@@ -2,7 +2,7 @@
 // ARCHIVO EquilibriumArrays.java
 // FECHA CREACIÓN: Jun 15, 2015
 //=======================================================================
-package co.zero.toptal;
+package co.zero.geekalgorithm.toptal.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * This class has some functions required in toptal exercises
+ * This class has some functions required in co.zero.toptal exercises
  * @author Hernán Tenjo
  * @version 1.0
  */

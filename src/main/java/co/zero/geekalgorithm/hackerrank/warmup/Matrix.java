@@ -1,4 +1,4 @@
-package co.zero.hackerrank.warmup;
+package co.zero.geekalgorithm.hackerrank.warmup;
 
 import java.util.Scanner;
 

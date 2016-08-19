@@ -1,18 +1,12 @@
-package co.zero.hackerrank.warmup;
+package co.zero.geekalgorithm.hackerrank.warmup;
 
 import java.util.Scanner;
 
 /**
  * Created by hernan on 8/18/16.
  */
-public class ArraySum {
-
-    public static void main(String[] args) {
-        //sumNormalInts();
-        sumReallyBigInts();
-    }
-
-    private static void sumNormalInts(){
+public class Arrays {
+    public static void sumNormalInts(){
         Scanner in = new Scanner(System.in);
         int arrayLength = in.nextInt();
         int sum = 0;
@@ -24,7 +18,7 @@ public class ArraySum {
         System.out.println(sum);
     }
 
-    private static void sumReallyBigInts(){
+    public static void sumReallyBigInts(){
         Scanner in = new Scanner(System.in);
         int arrayLength = in.nextInt();
         long sum = 0;

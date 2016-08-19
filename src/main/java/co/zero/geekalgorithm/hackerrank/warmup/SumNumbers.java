@@ -1,4 +1,4 @@
-package co.zero.hackerrank.warmup;
+package co.zero.geekalgorithm.hackerrank.warmup;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Created by hernan on 8/18/16.
  */
 public class SumNumbers {
-    private static int solveMeFirst(int a, int b) {
+    public static int solveMeFirst(int a, int b) {
         return a + b;
     }
 
