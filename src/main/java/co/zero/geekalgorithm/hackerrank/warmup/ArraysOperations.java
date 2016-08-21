@@ -5,8 +5,12 @@ import java.util.Scanner;
 /**
  * Created by hernan on 8/18/16.
  */
-public class Arrays {
-    public static void sumNormalInts(){
+public class ArraysOperations {
+    /**
+     *
+     * @return
+     */
+    public static int sumNormalInts(){
         Scanner in = new Scanner(System.in);
         int arrayLength = in.nextInt();
         int sum = 0;
@@ -16,9 +20,14 @@ public class Arrays {
         }
 
         System.out.println(sum);
+        return sum;
     }
 
-    public static void sumReallyBigInts(){
+    /**
+     * 
+     * @return
+     */
+    public static long sumReallyBigInts(){
         Scanner in = new Scanner(System.in);
         int arrayLength = in.nextInt();
         long sum = 0;
@@ -28,5 +37,6 @@ public class Arrays {
         }
 
         System.out.println(sum);
+        return sum;
     }
 }

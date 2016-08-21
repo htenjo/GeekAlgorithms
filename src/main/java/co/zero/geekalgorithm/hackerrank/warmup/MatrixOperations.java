@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by hernan on 8/18/16.
  */
-public class Matrix {
+public class MatrixOperations {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int matrixOrder = in.nextInt();
