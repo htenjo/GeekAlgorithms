@@ -22,6 +22,10 @@ public class ArithmeticOperations {
         return sum;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String sumTupla(){
         Scanner in = new Scanner(System.in);
         String[] scoresA = in.nextLine().split(Constants.SPACE);
@@ -39,6 +43,31 @@ public class ArithmeticOperations {
 
         String result = String.format("%d %d", scores[0], scores[1]);
         System.out.printf(result);
+        return result;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static final String buildStairs(){
+        Scanner in = new Scanner(System.in);
+        int stairSize = in.nextInt();
+        String result = Constants.EMPTY;
+
+        for(int i=0; i < stairSize; i++){
+            for (int j = 0; j < stairSize; j++) {
+                if(i + j >= stairSize - 1){
+                    result += Constants.PHONE_SYMBOL;
+                }else{
+                    result += Constants.SPACE;
+                }
+            }
+
+            result += Constants.NEW_LINE;
+        }
+
+        System.out.println(result);
         return result;
     }
 }

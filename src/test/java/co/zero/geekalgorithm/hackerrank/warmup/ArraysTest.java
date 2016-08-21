@@ -44,4 +44,29 @@ public class ArraysTest {
         }
     }
 
+    @Test
+        public void countIntTypes() throws Exception {
+        String data = "6\n-4 3 -9 0 4 1";
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            String result = ArraysOperations.countIntTypes();
+            assertEquals("0.500000\n0.333333\n0.166667", result);
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void circularRotation() throws Exception {
+        String data = "3 2 3\n1 2 3\n0\n1\n2\n";
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            String result = ArraysOperations.circularRotation();
+            assertEquals("2\n3\n1\n", result);
+        } finally {
+            System.setIn(stdin);
+        }
+    }
 }

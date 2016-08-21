@@ -45,4 +45,17 @@ public class ArithmeticOperationsTest {
             System.setIn(stdin);
         }
     }
+
+    @Test
+    public void buildStairs() throws Exception {
+        String data = "6\n";
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            String result = ArithmeticOperations.buildStairs();
+            assertEquals("     #\n    ##\n   ###\n  ####\n #####\n######\n", result);
+        } finally {
+            System.setIn(stdin);
+        }
+    }
 }
