@@ -31,7 +31,7 @@ public class NearbyAttractions {
     }
 
     public boolean isAcceptableOption(TravelOption option){
-
+        return true;
     }
 
     public static void main(String[] args) {
