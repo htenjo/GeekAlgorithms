@@ -3,7 +3,10 @@ package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 import co.zero.geekalgorithm.util.Constants;
 import co.zero.geekalgorithm.util.MathUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  * Created by hernan on 8/22/16.
@@ -96,6 +99,8 @@ public class NearbyAttractions {
 
             query.append(Constants.NEW_LINE);
         }
+
+        return query.toString();
     }
 }
 
