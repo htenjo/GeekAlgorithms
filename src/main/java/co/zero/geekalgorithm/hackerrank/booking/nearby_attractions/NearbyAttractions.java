@@ -34,30 +34,14 @@ public class NearbyAttractions {
         return true;
     }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        NearbyAttractions nearbyAttractions = new NearbyAttractions();
-        int numberOfAttractions = in.nextInt();
-
-        for(int i=0; i < numberOfAttractions; i++){
-            processAttractionLine(in, nearbyAttractions);
-        }
-
-        int numTestCases = in.nextInt();
-
-        for (int i = 0; i < numTestCases; i++) {
-            processTravelOption(in, nearbyAttractions);
-        }
-    }
-
-    private static void processAttractionLine(Scanner in, NearbyAttractions nearbyAttractions){
+    public void processAttractionLine(Scanner in, NearbyAttractions nearbyAttractions){
         double attractionLatitude = in.nextDouble();
         double attractionLongitude = in.nextDouble();
         int attractionId = in.nextInt();
         nearbyAttractions.addAttraction(attractionId, attractionLatitude, attractionLongitude);
     }
 
-    private static void processTravelOption(Scanner in, NearbyAttractions nearbyAttractions){
+    public void processTravelOption(Scanner in, NearbyAttractions nearbyAttractions){
         double hotelLatitude = in.nextDouble();
         double hotelLongitude = in.nextDouble();
         String transport = in.next();
