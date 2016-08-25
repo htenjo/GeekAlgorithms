@@ -12,25 +12,27 @@ import java.util.TreeSet;
  * Created by hernan on 8/22/16.
  */
 public class NearbyAttractions {
-    private TreeSet<Attraction> attractions;
+    private List<Attraction> attractions;
     private List<TravelOption> options;
+    private TreeSet<Attraction> reachableAttractions;
 
     /**
      *
      */
     public NearbyAttractions() {
-        this.attractions = new TreeSet<>(new AttractionComparator());
+        this.attractions = new ArrayList<>();
         this.options = new ArrayList<>();
+        this.reachableAttractions = new TreeSet<>(new AttractionComparator());
     }
 
     /**
      *
      * @param attractionId
-     * @param attractionLatitud
+     * @param attractionLatitude
      * @param attractionLongitude
      */
-    public void addAttraction(int attractionId, double attractionLatitud, double attractionLongitude){
-        Attraction attraction = new Attraction(attractionId, attractionLatitud, attractionLongitude);
+    private void addAttraction(int attractionId, double attractionLatitude, double attractionLongitude){
+        Attraction attraction = new Attraction(attractionId, attractionLatitude, attractionLongitude);
         attractions.add(attraction);
     }
 
@@ -41,7 +43,7 @@ public class NearbyAttractions {
      * @param timeWilling
      * @param transportType
      */
-    public void addTravelOption(double attractionLatitude, double attractionLongitude,
+    private void addTravelOption(double attractionLatitude, double attractionLongitude,
                                 int timeWilling, TransportType transportType){
         TravelOption option = new TravelOption(attractionLatitude, attractionLongitude, transportType, timeWilling);
         options.add(option);
@@ -51,25 +53,42 @@ public class NearbyAttractions {
      *
      * @param in
      */
-    public void processAttractionLine(Scanner in){
+    private void processAttractionLine(Scanner in){
+        int attractionId = in.nextInt();
         double attractionLatitude = in.nextDouble();
         double attractionLongitude = in.nextDouble();
-        int attractionId = in.nextInt();
         addAttraction(attractionId, attractionLatitude, attractionLongitude);
     }
 
     /**
      *
      * @param in
-     * @param nearbyAttractions
      */
-    public void processTravelOption(Scanner in, NearbyAttractions nearbyAttractions){
+    private void processTravelOption(Scanner in){
         double hotelLatitude = in.nextDouble();
         double hotelLongitude = in.nextDouble();
         String transport = in.next();
         TransportType transportType = TransportType.valueOf(transport);
         int timeWilling = in.nextInt();
         addTravelOption(hotelLatitude, hotelLongitude, timeWilling, transportType);
+    }
+
+    /**
+     *
+     */
+    public void processInput(){
+        Scanner in = new Scanner(System.in);
+        int numberOfAttractions = in.nextInt();
+
+        for(int i=0; i < numberOfAttractions; i++){
+            processAttractionLine(in);
+        }
+
+        int numTestCases = in.nextInt();
+
+        for (int i = 0; i < numTestCases; i++) {
+            processTravelOption(in);
+        }
     }
 
     /**
@@ -81,22 +100,26 @@ public class NearbyAttractions {
         double distance, speed, time;
 
         for (TravelOption option : options) {
+            reachableAttractions.clear();
+
             for(Attraction attraction : attractions){
                 distance = MathUtils.getCubeDistanceBetween(option.getPoint(), attraction.getPoint()); //KM
+                distance = MathUtils.roundDecimal(distance, 2);
                 speed = option.getTransportType().getSpeed(); // KM/H
-                time = option.getTimeWilling() / Constants.TIME_MINUTES_IN_HOUR; //KM
+                time = option.getTimeWilling() * 1.0 / Constants.TIME_MINUTES_IN_HOUR; //KM
 
-                if(time <= distance / speed){
-                    attraction.setReachable(true);
+                if(time >= distance / speed){
                     attraction.setDistance(distance);
+                    reachableAttractions.add(attraction);
                 }
             }
 
-            for(Attraction attraction : attractions){
+            for(Attraction attraction : reachableAttractions){
                 query.append(attraction.getId());
                 query.append(Constants.SPACE);
             }
 
+            query.deleteCharAt(query.length() - 1);
             query.append(Constants.NEW_LINE);
         }
 

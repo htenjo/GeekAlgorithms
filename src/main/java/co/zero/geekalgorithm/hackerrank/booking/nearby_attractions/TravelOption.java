@@ -1,7 +1,5 @@
 package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 
-import java.util.Comparator;
-
 /**
  * Created by hernan on 8/22/16.
  */
@@ -38,5 +36,14 @@ public class TravelOption{
 
     public void setTimeWilling(int timeWilling) {
         this.timeWilling = timeWilling;
+    }
+
+    @Override
+    public String toString() {
+        return "TravelOption{" +
+                "point=" + point +
+                ", transportType=" + transportType +
+                ", timeWilling=" + timeWilling +
+                '}';
     }
 }

@@ -7,20 +7,9 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
         NearbyAttractions nearbyAttractions = new NearbyAttractions();
-        int numberOfAttractions = in.nextInt();
-
-        for(int i=0; i < numberOfAttractions; i++){
-            nearbyAttractions.processAttractionLine(in);
-        }
-
-        int numTestCases = in.nextInt();
-
-        for (int i = 0; i < numTestCases; i++) {
-            nearbyAttractions.processTravelOption(in, nearbyAttractions);
-        }
-
-
+        nearbyAttractions.processInput();
+        String result = nearbyAttractions.processClosestAttractions();
+        System.out.println(result);
     }
 }

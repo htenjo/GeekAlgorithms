@@ -1,7 +1,5 @@
 package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 
-import co.zero.geekalgorithm.util.MathUtils;
-
 /**
  * Created by hernan on 8/22/16.
  */
@@ -28,5 +26,13 @@ public class Point{
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
     }
 }

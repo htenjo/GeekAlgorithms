@@ -2,6 +2,7 @@ package co.zero.geekalgorithm.util;
 
 import co.zero.geekalgorithm.hackerrank.booking.nearby_attractions.Point;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 
@@ -35,12 +36,18 @@ public class MathUtils {
      * @param maxDecimals
      * @return
      */
-    public static String getDecimalRounded(double number, int minDecimals, int maxDecimals){
+    public static String formatDecimalRounded(double number, int minDecimals, int maxDecimals){
         NumberFormat formatter = NumberFormat.getNumberInstance();
         formatter.setMinimumFractionDigits(minDecimals);
         formatter.setMaximumFractionDigits(maxDecimals);
         formatter.setRoundingMode(RoundingMode.HALF_UP);
         return formatter.format(number);
+    }
+
+    public static double roundDecimal(double number, int decimals){
+        BigDecimal bd = new BigDecimal(number);
+        bd = bd.setScale(decimals, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
     /**
@@ -50,5 +57,10 @@ public class MathUtils {
      */
     public static double convertDegreesToRadians(double degrees){
         return Constants.MATH_PI_DEFAULT * degrees / 180;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(MathUtils.roundDecimal(2.3467, 2));
+        System.out.println(MathUtils.roundDecimal(3.4522, 2));
     }
 }

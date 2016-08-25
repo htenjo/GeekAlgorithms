@@ -13,10 +13,12 @@ public class AttractionComparator implements Comparator<Attraction>{
         }else if (opt1.getDistance() < opt2.getDistance()){
             return -1;
         }else{
-            if(opt1.getId() > opt2.getId()){
+            if(opt1.getId() > opt2.getId()) {
                 return 1;
-            }else{
+            }else if(opt1.getId() > opt2.getId()){
                 return -1;
+            }else{
+                return 0;
             }
         }
     }

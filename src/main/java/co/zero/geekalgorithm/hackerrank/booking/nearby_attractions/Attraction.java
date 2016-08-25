@@ -7,11 +7,10 @@ public class Attraction{
     private int id;
     private Point point;
     private double distance;
-    private boolean reachable;
 
-    public Attraction(int id, double latitud, double longitud) {
+    public Attraction(int id, double latitude, double longitude) {
         this.id = id;
-        this.point = new Point(latitud, longitud);
+        this.point = new Point(latitude, longitude);
     }
 
     public int getId() {
@@ -38,11 +37,11 @@ public class Attraction{
         this.distance = distance;
     }
 
-    public boolean isReachable() {
-        return reachable;
-    }
-
-    public void setReachable(boolean reachable) {
-        this.reachable = reachable;
+    @Override
+    public String toString() {
+        return "Attraction{" +
+                "id=" + id +
+                ", distance=" + distance +
+                '}';
     }
 }
