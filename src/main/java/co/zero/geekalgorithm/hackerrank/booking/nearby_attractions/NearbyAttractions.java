@@ -1,95 +1,101 @@
 package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 
-import java.math.RoundingMode;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import co.zero.geekalgorithm.util.Constants;
+import co.zero.geekalgorithm.util.MathUtils;
+
+import java.util.*;
 
 /**
  * Created by hernan on 8/22/16.
  */
 public class NearbyAttractions {
-    private static final double PI = 3.14159265359;
-    private static final double EARTH_RADIUS = 6371;
-    private List<Attraction> attractions;
+    private TreeSet<Attraction> attractions;
     private List<TravelOption> options;
 
+    /**
+     *
+     */
     public NearbyAttractions() {
-        this.attractions = new ArrayList<>();
+        this.attractions = new TreeSet<>(new AttractionComparator());
+        this.options = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param attractionId
+     * @param attractionLatitud
+     * @param attractionLongitude
+     */
     public void addAttraction(int attractionId, double attractionLatitud, double attractionLongitude){
         Attraction attraction = new Attraction(attractionId, attractionLatitud, attractionLongitude);
         attractions.add(attraction);
     }
 
+    /**
+     *
+     * @param attractionLatitude
+     * @param attractionLongitude
+     * @param timeWilling
+     * @param transportType
+     */
     public void addTravelOption(double attractionLatitude, double attractionLongitude,
                                 int timeWilling, TransportType transportType){
         TravelOption option = new TravelOption(attractionLatitude, attractionLongitude, transportType, timeWilling);
         options.add(option);
     }
 
-    public boolean isAcceptableOption(TravelOption option){
-        return true;
-    }
-
-    public void processAttractionLine(Scanner in, NearbyAttractions nearbyAttractions){
+    /**
+     *
+     * @param in
+     */
+    public void processAttractionLine(Scanner in){
         double attractionLatitude = in.nextDouble();
         double attractionLongitude = in.nextDouble();
         int attractionId = in.nextInt();
-        nearbyAttractions.addAttraction(attractionId, attractionLatitude, attractionLongitude);
+        addAttraction(attractionId, attractionLatitude, attractionLongitude);
     }
 
+    /**
+     *
+     * @param in
+     * @param nearbyAttractions
+     */
     public void processTravelOption(Scanner in, NearbyAttractions nearbyAttractions){
         double hotelLatitude = in.nextDouble();
         double hotelLongitude = in.nextDouble();
         String transport = in.next();
         TransportType transportType = TransportType.valueOf(transport);
         int timeWilling = in.nextInt();
-        nearbyAttractions.addTravelOption(hotelLatitude, hotelLongitude, timeWilling, transportType);
+        addTravelOption(hotelLatitude, hotelLongitude, timeWilling, transportType);
     }
 
     /**
      *
-     * @param pointA
-     * @param pointB
      * @return
      */
-    private static double distanceBetween(Point pointA, Point pointB){
-        double pointALatitude = convertDegreesToRadians(pointA.getLatitude());
-        double pointALongitude = convertDegreesToRadians(pointA.getLongitude());
-        double pointBLatitude = convertDegreesToRadians(pointB.getLatitude());
-        double pointBLongitude = convertDegreesToRadians(pointB.getLongitude());
+    public String processClosestAttractions(){
+        StringBuilder query = new StringBuilder();
+        double distance, speed, time;
 
-        return Math.acos(
-                Math.sin(pointALatitude) * Math.sin(pointBLatitude) +
-                Math.cos(pointALatitude) * Math.cos(pointBLatitude) *
-                        Math.cos(pointBLongitude - pointALongitude)) * EARTH_RADIUS;
-    }
+        for (TravelOption option : options) {
+            for(Attraction attraction : attractions){
+                distance = MathUtils.getCubeDistanceBetween(option.getPoint(), attraction.getPoint()); //KM
+                speed = option.getTransportType().getSpeed(); // KM/H
+                time = option.getTimeWilling() / Constants.TIME_MINUTES_IN_HOUR; //KM
 
-    /**
-     *
-     * @param number
-     * @param minDecimals
-     * @param maxDecimals
-     * @return
-     */
-    private static String getDecimalRounded(double number, int minDecimals, int maxDecimals){
-        NumberFormat formatter = NumberFormat.getNumberInstance();
-        formatter.setMinimumFractionDigits(minDecimals);
-        formatter.setMaximumFractionDigits(maxDecimals);
-        formatter.setRoundingMode(RoundingMode.HALF_UP);
-        return formatter.format(number);
-    }
+                if(time <= distance / speed){
+                    attraction.setReachable(true);
+                    attraction.setDistance(distance);
+                }
+            }
 
-    /**
-     * Transform the given degrees to radians
-     * @param degrees
-     * @return The equivalent in radians of the given degrees
-     */
-    private static double convertDegreesToRadians(double degrees){
-        return PI * degrees / 180;
+            for(Attraction attraction : attractions){
+                query.append(attraction.getId());
+                query.append(Constants.SPACE);
+            }
+
+            query.append(Constants.NEW_LINE);
+        }
     }
 }
 

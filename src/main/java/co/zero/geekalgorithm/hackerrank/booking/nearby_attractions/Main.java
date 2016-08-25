@@ -12,7 +12,7 @@ public class Main {
         int numberOfAttractions = in.nextInt();
 
         for(int i=0; i < numberOfAttractions; i++){
-            nearbyAttractions.processAttractionLine(in, nearbyAttractions);
+            nearbyAttractions.processAttractionLine(in);
         }
 
         int numTestCases = in.nextInt();
@@ -20,5 +20,7 @@ public class Main {
         for (int i = 0; i < numTestCases; i++) {
             nearbyAttractions.processTravelOption(in, nearbyAttractions);
         }
+
+
     }
 }

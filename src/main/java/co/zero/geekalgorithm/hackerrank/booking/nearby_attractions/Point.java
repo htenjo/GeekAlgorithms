@@ -1,5 +1,7 @@
 package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 
+import co.zero.geekalgorithm.util.MathUtils;
+
 /**
  * Created by hernan on 8/22/16.
  */

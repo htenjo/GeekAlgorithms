@@ -3,9 +3,11 @@ package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 /**
  * Created by hernan on 8/22/16.
  */
-public class Attraction {
+public class Attraction{
     private int id;
     private Point point;
+    private double distance;
+    private boolean reachable;
 
     public Attraction(int id, double latitud, double longitud) {
         this.id = id;
@@ -26,5 +28,21 @@ public class Attraction {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public boolean isReachable() {
+        return reachable;
+    }
+
+    public void setReachable(boolean reachable) {
+        this.reachable = reachable;
     }
 }
