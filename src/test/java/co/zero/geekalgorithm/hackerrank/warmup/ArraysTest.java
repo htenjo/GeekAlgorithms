@@ -4,6 +4,9 @@ import org.junit.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static org.junit.Assert.*;
 
@@ -38,14 +41,14 @@ public class ArraysTest {
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             long sum = ArraysOperations.sumReallyBigInts();
-            assertEquals(sum, 2147483647L*4);
+            assertEquals(sum, 2147483647L * 4);
         } finally {
             System.setIn(stdin);
         }
     }
 
     @Test
-        public void countIntTypes() throws Exception {
+    public void countIntTypes() throws Exception {
         String data = "6\n-4 3 -9 0 4 1";
 
         try {
@@ -65,6 +68,78 @@ public class ArraysTest {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
             String result = ArraysOperations.circularRotation();
             assertEquals("2\n3\n1\n", result);
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void invertedArray() {
+        String data = "10 \n1 2 3 4 5 6 7 8 9 10";
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            String result = ArraysOperations.invertArray();
+            assertEquals("10 9 8 7 6 5 4 3 2 1", result);
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void maxHourglass1() {
+        String data = "1 1 1 0 0 0\n" +
+                "0 1 0 0 0 0\n" +
+                "1 1 1 0 0 0\n" +
+                "0 0 2 4 4 0\n" +
+                "0 0 0 2 0 0\n" +
+                "0 0 1 2 4 0";
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            assertEquals(19, ArraysOperations.maxHourglass(6, 6));
+        } finally {
+            System.setIn(stdin);
+        }
+
+        data = "0 -4 -6 0 -7 -6\n" +
+                "-1 -2 -6 -8 -3 -1\n" +
+                "-8 -4 -2 -8 -8 -6\n" +
+                "-3 -1 -2 -5 -7 -4\n" +
+                "-3 -5 -3 -6 -6 -6\n" +
+                "-3 -6 0 -8 -6 -7";
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            assertEquals(-19, ArraysOperations.maxHourglass(6, 6));
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void maxHourglass2() {
+        String data = "0 -4 -6 0 -7 -6\n" +
+                "-1 -2 -6 -8 -3 -1\n" +
+                "-8 -4 -2 -8 -8 -6\n" +
+                "-3 -1 -2 -5 -7 -4\n" +
+                "-3 -5 -3 -6 -6 -6\n" +
+                "-3 -6 0 -8 -6 -7";
+
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            assertEquals(-19, ArraysOperations.maxHourglass(6, 6));
+        } finally {
+            System.setIn(stdin);
+        }
+    }
+
+    @Test
+    public void leftRotation() {
+        String data = "5 4\n" +
+                "1 2 3 4 5";
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            assertEquals("5 1 2 3 4", ArraysOperations.leftRotation());
         } finally {
             System.setIn(stdin);
         }

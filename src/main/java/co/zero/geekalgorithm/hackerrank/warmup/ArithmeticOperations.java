@@ -23,7 +23,7 @@ public class ArithmeticOperations {
     }
 
     /**
-     *
+     * Given a tuple set, sum their compponents
      * @return
      */
     public static String sumTupla(){

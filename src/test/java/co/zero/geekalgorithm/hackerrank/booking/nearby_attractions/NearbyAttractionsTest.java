@@ -1,6 +1,5 @@
 package co.zero.geekalgorithm.hackerrank.booking.nearby_attractions;
 
-import co.zero.geekalgorithm.hackerrank.warmup.ArithmeticOperations;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -8,7 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by htenjo on 8/25/16.

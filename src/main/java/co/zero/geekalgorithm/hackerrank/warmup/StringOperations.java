@@ -38,7 +38,6 @@ public class StringOperations {
         return stack.length() == 0;
     }
 
-
     public static void main(String[] args) {
         String expression = "(kjds(hfkj))sdhf[{asdrttttttxxxxx}xxx]";
         expression = expression.replaceAll("[^\\[\\]{}()]", "");
