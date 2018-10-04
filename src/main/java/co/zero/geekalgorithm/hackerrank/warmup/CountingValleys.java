@@ -12,6 +12,10 @@ public class CountingValleys {
         System.out.println("CountingValleys3 = " + countingValleys(path3.length(), path3));
     }
 
+    /**
+     * Time = O(N)
+     * Space = O(N)
+     */
     private static int countingValleys(int n, String s) {
         int currentPosition = 0, lastPosition = 0;
         int valleys = 0;
