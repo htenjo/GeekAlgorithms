@@ -1,5 +1,8 @@
 package co.zero.geekalgorithm.hackerrank.warmup;
 
+/**
+ * Find the minimum jumps required if you can jump only over the 0's and maximum 1 or 2 steps forward.
+ */
 public class JumpingOnTheClouds {
 
     public static void main(String[] args) {

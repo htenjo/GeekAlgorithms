@@ -1,5 +1,9 @@
 package co.zero.geekalgorithm.hackerrank.warmup;
 
+/**
+ * Given a Path where D=Down and U=Up and starting from Sea level = 0, determine
+ * the amount of valleys in the path (zones below sea level).
+ */
 public class CountingValleys {
 
     public static void main(String[] args) {
