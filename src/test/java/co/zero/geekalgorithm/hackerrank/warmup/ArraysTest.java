@@ -17,12 +17,12 @@ public class ArraysTest {
     private static InputStream stdin;
 
     @BeforeClass
-    public static void setUp() throws Exception {
+    public static void setUp() {
         stdin = System.in;
     }
 
     @Test
-    public void sumNormalInts() throws Exception {
+    public void sumNormalInts() {
         String data = "5\n1 2 3 4 5\n";
 
         try {
@@ -35,7 +35,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void sumReallyBigInts() throws Exception {
+    public void sumReallyBigInts() {
         String data = "4\n2147483647 2147483647 2147483647 2147483647";
 
         try {
@@ -48,7 +48,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void countIntTypes() throws Exception {
+    public void countIntTypes() {
         String data = "6\n-4 3 -9 0 4 1";
 
         try {
@@ -61,7 +61,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void circularRotation() throws Exception {
+    public void circularRotation() {
         String data = "3 2 3\n1 2 3\n0\n1\n2\n";
 
         try {
@@ -133,15 +133,4 @@ public class ArraysTest {
         }
     }
 
-    @Test
-    public void leftRotation() {
-        String data = "5 4\n" +
-                "1 2 3 4 5";
-        try {
-            System.setIn(new ByteArrayInputStream(data.getBytes()));
-            assertEquals("5 1 2 3 4", ArraysOperations.leftRotation());
-        } finally {
-            System.setIn(stdin);
-        }
-    }
 }

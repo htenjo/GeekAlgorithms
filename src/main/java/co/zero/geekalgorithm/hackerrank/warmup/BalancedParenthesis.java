@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by hernan on 5/31/17.
+ * Created by Hernan Tenjo on 10/10/18.
  */
 class BalancedParenthesis {
     /**
      * Method that identify if a given expression has a balanced amount of parenthesis.
-     * @param expression The expression to be analyzed.
+     * @param expression The expression to be analyzed (alphabet = {'(',')', '{', '}', '[', ']'}).
      * @return True if the expression has balancend parenthesis, false otherwise.
      * Complexity: Time O(N), Space AVG O(1), WORST O(N) when all are open parenthesis.
      */
