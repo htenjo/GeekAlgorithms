@@ -1,4 +1,4 @@
-package co.zero.geekalgorithm.hackerrank.warmup;
+package co.zero.geekalgorithm.hackerrank.arrays;
 
 class ArrayLeftRotation {
     /**
