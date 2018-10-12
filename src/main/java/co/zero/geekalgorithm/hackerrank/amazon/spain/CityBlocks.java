@@ -1,4 +1,4 @@
-package co.zero.geekalgorithm.hackerrank.amazon_spain;
+package co.zero.geekalgorithm.hackerrank.amazon.spain;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,22 +1,12 @@
 package co.zero.geekalgorithm.hackerrank.amazon;
 
-public class Magic3 {
-
-    public static void main(String[] args) {
-        System.out.println("getMinOnlyOneMultiple(03) = " + getMinOnlyOneMultiple(3));
-        System.out.println("getMinOnlyOneMultiple(13) = " + getMinOnlyOneMultiple(13));
-        System.out.println("getMinOnlyOneMultiple(23) = " + getMinOnlyOneMultiple(23));
-        System.out.println("getMinOnlyOneMultiple(33) = " + getMinOnlyOneMultiple(33));
-        System.out.println("getMinOnlyOneMultiple(43) = " + getMinOnlyOneMultiple(43));
-        System.out.println("getMinOnlyOneMultiple(53) = " + getMinOnlyOneMultiple(53));
-        System.out.println("getMinOnlyOneMultiple(63) = " + getMinOnlyOneMultiple(63));
-        System.out.println("getMinOnlyOneMultiple(73) = " + getMinOnlyOneMultiple(73));
-        System.out.println("getMinOnlyOneMultiple(83) = " + getMinOnlyOneMultiple(83));
-        System.out.println("getMinOnlyOneMultiple(93) = " + getMinOnlyOneMultiple(93));
-        System.out.println("getMinOnlyOneMultiple(HUGE) = " + getMinOnlyOneMultiple(999999993));
-    }
-
-    private static double getMinOnlyOneMultiple(int N) {
+/**
+ * A number ending with 3 will have a multiple which is all 1. Eg­ multiple of 3 is 111 and of
+ * 13 is 111111. Given a number ending with 3 find its least multiple which is all 1. The
+ * 2 multiple of the given number can be beyond the range of int,long etc. Optimize for time.
+ */
+class Magic3 {
+    static double getMinOnlyOneMultiple(int N) {
         double i = 1;
 
         while (i % N != 0) {
