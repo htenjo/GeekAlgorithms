@@ -9,7 +9,7 @@ class Magic3 {
     static double getMinOnlyOneMultiple(int N) {
         double i = 1;
 
-        while (i % N != 0) {
+        while (i % N != 0) { // when %0 is multiple
             i = i * 10 + 1;
         }
 
