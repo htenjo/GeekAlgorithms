@@ -1,13 +1,11 @@
 package co.zero.geekalgorithm.hackerrank.warmup;
 
-// Java program to search all anagrams
-// of a pattern in a text
+// Java program to search all anagrams of a pattern in a text
 public class AnagramSearch {
     static final int MAX = 256;
 
-    // This function returns true if contents
-    // of arr1[] and arr2[] are same, otherwise
-    // false.
+    // This function returns true if contents of arr1[] and arr2[] are same,
+    // otherwise false.
     static boolean compare(char arr1[], char arr2[]) {
         for (int i = 0; i < MAX; i++)
             if (arr1[i] != arr2[i])
@@ -15,8 +13,7 @@ public class AnagramSearch {
         return true;
     }
 
-    // This function search for all permutations
-    // of pat[] in txt[]
+    // This function search for all permutations of pat[] in txt[]
     static void search(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();
@@ -38,8 +35,7 @@ public class AnagramSearch {
             // Compare counts of current window
             // of text with counts of pattern[]
             if (compare(countP, countTW))
-                System.out.println("Found at Index " +
-                        (i - M));
+                System.out.println("Found at Index " + (i - M));
 
             // Add current character to current
             // window
@@ -51,9 +47,9 @@ public class AnagramSearch {
         }
 
         // Check for the last window in text
-        if (compare(countP, countTW))
-            System.out.println("Found at Index " +
-                    (N - M));
+        if (compare(countP, countTW)) {
+            System.out.println("Found at Index " + (N - M));
+        }
     }
 
     /* Driver program to test above function */
