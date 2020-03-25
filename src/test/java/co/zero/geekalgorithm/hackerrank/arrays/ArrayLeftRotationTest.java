@@ -1,5 +1,6 @@
 package co.zero.geekalgorithm.hackerrank.arrays;
 
+import co.zero.geekalgorithm.datastructures.arrays.ArrayLeftRotation;
 import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
