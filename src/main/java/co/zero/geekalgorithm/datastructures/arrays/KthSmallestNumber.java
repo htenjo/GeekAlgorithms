@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 /**
  * Find the Kth smallest element in the given array.
  */
-public class KthSmallerNumber {
+public class KthSmallestNumber {
     
     /**
      * This just sort the array and get the Kth element. This is the easier way but usually doesn't accomplish the

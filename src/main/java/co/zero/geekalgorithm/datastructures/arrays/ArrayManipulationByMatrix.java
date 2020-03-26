@@ -6,12 +6,18 @@ import java.util.Arrays;
  * Starting with a 1-indexed array of zeros and a list of operations, for each operation add a value to each of the
  * array element between two given indices, inclusive. Once all operations have been performed, return the maximum value
  * in your array.
+ * Challenge: https://www.hackerrank.com/challenges/crush/problem?h_r=next-challenge&h_v=zen&h_r=next-challenge&h_v=zen
+ * Answer: https://www.geeksforgeeks.org/constant-time-range-add-operation-array/
  */
 public class ArrayManipulationByMatrix {
 
     /**
      * Time Complexity = O(M) =~ O(N)
      * Space Complexity = O(n) =~ O(1)
+     * When we add a value V to specific index of array, It represents adding V to all elements right to this index,
+     * that is why we add –V after range to remove its effect after its range of add query.
+     * Please note in below code, if range spans till the last index, the addition of –V
+     * is omitted to be in memory limit of the array.
      */
     // Complete the arrayManipulation function below.
     static long arrayManipulation(int n, int[][] queries) {
