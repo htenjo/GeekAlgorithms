@@ -3,7 +3,7 @@ package co.zero.geekalgorithm.training.hackerrank30;
 import java.util.Scanner;
 
 //Day 2
-public class DataTypes {
+public class D02DataTypes {
     
     public static void main(String[] args) {
         int i = 4;

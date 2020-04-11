@@ -3,7 +3,7 @@ package co.zero.geekalgorithm.training.hackerrank30;
 import java.util.Scanner;
 
 //Day 1
-public class Operators {
+public class D01Operators {
     // Complete the solve function below.
     static void solve(double meal_cost, int tip_percent, int tax_percent) {
         double tipValue = (meal_cost * tip_percent) / 100;

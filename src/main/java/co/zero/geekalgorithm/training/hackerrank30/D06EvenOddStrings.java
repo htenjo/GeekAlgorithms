@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 //Day 6
-public class EvenOddStrings {
+public class D06EvenOddStrings {
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

@@ -3,11 +3,11 @@ package co.zero.geekalgorithm.training.hackerrank30;
 import java.util.Scanner;
 
 //Day 4: Class vs Interface
-public class Person {
+public class D04Person {
     
     private int age;
     
-    public Person(int initialAge) {
+    public D04Person(int initialAge) {
         if (initialAge >= 0) {
             this.age = initialAge;
         } else {
@@ -36,7 +36,7 @@ public class Person {
         int T = sc.nextInt();
         for (int i = 0; i < T; i++) {
             int age = sc.nextInt();
-            Person p = new Person(age);
+            D04Person p = new D04Person(age);
             p.amIOld();
             for (int j = 0; j < 3; j++) {
                 p.yearPasses();

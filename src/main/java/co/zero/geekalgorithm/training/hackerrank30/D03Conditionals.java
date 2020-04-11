@@ -3,7 +3,7 @@ package co.zero.geekalgorithm.training.hackerrank30;
 import java.util.Scanner;
 
 //Day 3
-public class Conditionals {
+public class D03Conditionals {
     private static final Scanner scanner = new Scanner(System.in);
     
     public static void main(String[] args) {
