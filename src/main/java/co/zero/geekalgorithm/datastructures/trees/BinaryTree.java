@@ -78,6 +78,14 @@ public class BinaryTree<T extends Comparable> {
         }
     }
     
+    public static <T> void topView(BinaryTreeNode<T> root) {
+        System.out.print(root.value + " ");
+        
+        if (root.right != null) {
+            topView(root.right);
+        }
+    }
+    
     /**
      * Node definition for a binary tree
      */
@@ -105,5 +113,6 @@ public class BinaryTree<T extends Comparable> {
         tree.add(5);
         tree.add(2);
         System.out.println(tree.traversePreOrder());
+        BinaryTree.topView(tree.root);
     }
 }
