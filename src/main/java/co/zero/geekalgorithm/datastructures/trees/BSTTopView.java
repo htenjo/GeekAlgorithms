@@ -1,97 +1,46 @@
 package co.zero.geekalgorithm.datastructures.trees;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class BSTTopView {
-    static class Node {
-        Node left;
-        Node right;
-        int data;
+    public static String topViewTraversal(BasicBstNode<Integer> root) {
+        String levelTraversal = BSTUtils.levelTraversal(root);
+        List<Integer> levelElements =  Arrays.stream(levelTraversal.split(" "))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        Map<Integer, List<Integer>> verticalDistances = BSTUtils.verticalTraversal(root);
+        StringBuilder traversal = new StringBuilder();
         
-        Node(int data) {
-            this.data = data;
-            left = null;
-            right = null;
+        for (Entry<Integer, List<Integer>> entry : verticalDistances.entrySet()) {
+            Integer topElement = getTopElement(entry.getValue(), levelElements);
+            traversal.append(topElement + " ");
         }
+        
+        return traversal.toString();
     }
     
-    public static void topView(Node root) {
-        class QueueObj {
-            Node node;
-            int hd;
-            
-            QueueObj(Node node, int hd) {
-                this.node = node;
-                this.hd = hd;
-            }
-        }
-        
-        Queue<QueueObj> q = new LinkedList<>();
-        Map<Integer, Node> topViewMap = new TreeMap<>();
-        
-        if (root == null) {
-            return;
+    private static Integer getTopElement(List<Integer> verticalElements, List<Integer> levels) {
+        if (verticalElements.size() == 1) {
+            return verticalElements.get(0);
         } else {
-            q.add(new QueueObj(root, 0));
-        }
-        
-        System.out.println("The top view of the tree is : ");
-        
-        // count function returns 1 if the container
-        // contains an element whose key is equivalent
-        // to hd, or returns zero otherwise.
-        while (!q.isEmpty()) {
-            QueueObj tmpNode = q.poll();
-            if (!topViewMap.containsKey(tmpNode.hd)) {
-                topViewMap.put(tmpNode.hd, tmpNode.node);
-            }
-            
-            if (tmpNode.node.left != null) {
-                q.add(new QueueObj(tmpNode.node.left, tmpNode.hd - 1));
-            }
-            
-            if (tmpNode.node.right != null) {
-                q.add(new QueueObj(tmpNode.node.right, tmpNode.hd + 1));
-            }
-        }
-        
-        for (Entry<Integer, Node> entry : topViewMap.entrySet()) {
-            System.out.print(entry.getValue().data + " ");
-        }
-    }
-    
-    public static Node insert(Node root, int data) {
-        if (root == null) {
-            return new Node(data);
-        } else {
-            Node cur;
-            if (data <= root.data) {
-                cur = insert(root.left, data);
-                root.left = cur;
-            } else {
-                cur = insert(root.right, data);
-                root.right = cur;
-            }
-            return root;
+            List<Integer> levelCopy = new ArrayList(levels);
+            levelCopy.retainAll(verticalElements);
+            return levelCopy.get(0);
         }
     }
     
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int t = scan.nextInt();
-        Node root = null;
-        while (t-- > 0) {
-            int data = scan.nextInt();
-            root = insert(root, data);
-        }
-        
-        topView(root);
-        System.out.println();
-        scan.close();
+        BasicBstNode<Integer> root = new BasicBstNode<>(1);
+        root.setLeft(new BasicBstNode(2));
+        root.setRight(new BasicBstNode(3));
+        root.getLeft().setRight(new BasicBstNode(4));
+        root.getLeft().getRight().setRight(new BasicBstNode(5));
+        root.getLeft().getRight().getRight().setRight(new BasicBstNode(6));
+        System.out.println(topViewTraversal(root));
     }
 }
